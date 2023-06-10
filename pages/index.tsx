@@ -19,9 +19,12 @@ import SidebarList from '@/components/sidebar/SidebarList';
 import Header from '@/components/header/Header';
 
 export default function Home() {
+  const defaultPrompt =
+    "You are an intelligent AI assistant designed to interpret and answer questions and instructions based on specific provided documents. The context from these documents has been processed and made accessible to you.\n\nYour mission is to generate answers that are accurate, succinct, and comprehensive, drawing upon the information contained in the context of the documents. If the answer isn't readily found in the documents, you should make use of your training data and understood context to infer and provide the most plausible response.\n\nYou are also capable of evaluating, comparing and providing opinions based on the content of these documents. Hence, if asked to compare or analyze the documents, use your AI understanding to deliver an insightful response.\n\nIf the query isn't related to the document context, kindly inform the user that your primary task is to answer questions specifically related to the document context.";
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
   const [modelTemperature, setModelTemperature] = useState<number>(0.5);
+  const [qaPrompt, setQAPrompt] = useState<string>(defaultPrompt);
 
   const [returnSourceDocuments, setReturnSourceDocuments] =
     useState<boolean>(false);
@@ -221,6 +224,7 @@ export default function Home() {
         selectedNamespace,
         returnSourceDocuments,
         modelTemperature,
+        qaPrompt,
       }),
     });
 
@@ -343,6 +347,8 @@ export default function Home() {
                       setReturnSourceDocuments={setReturnSourceDocuments}
                       modelTemperature={modelTemperature}
                       setModelTemperature={setModelTemperature}
+                      qaPrompt={qaPrompt}
+                      setQAPrompt={setQAPrompt}
                       nameSpaceHasChats={nameSpaceHasChats}
                       isLoadingNamespaces={isLoadingNamespaces}
                     />
@@ -371,6 +377,8 @@ export default function Home() {
               setReturnSourceDocuments={setReturnSourceDocuments}
               modelTemperature={modelTemperature}
               setModelTemperature={setModelTemperature}
+              qaPrompt={qaPrompt}
+              setQAPrompt={setQAPrompt}
               nameSpaceHasChats={nameSpaceHasChats}
               isLoadingNamespaces={isLoadingNamespaces}
             />

@@ -14,6 +14,7 @@ export default async function handler(
     selectedNamespace,
     returnSourceDocuments,
     modelTemperature,
+    qaPrompt,
   } = req.body;
 
   const openAIapiKey = req.headers['x-openai-key'];
@@ -58,6 +59,7 @@ export default async function handler(
       vectorStore,
       returnSourceDocuments,
       modelTemperature,
+      qaPrompt,
       openAIapiKey as string,
     );
     const response = await chain.call({

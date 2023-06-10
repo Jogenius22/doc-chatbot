@@ -6,6 +6,7 @@ import {
   ListOfNamespaces,
   SourceDocumentsToggle,
   ModelTemperature,
+  QAPrompt,
 } from './components/index';
 
 interface SidebarListProps {
@@ -15,6 +16,8 @@ interface SidebarListProps {
   setReturnSourceDocuments: React.Dispatch<React.SetStateAction<boolean>>;
   modelTemperature: number;
   setModelTemperature: React.Dispatch<React.SetStateAction<number>>;
+  qaPrompt: string;
+  setQAPrompt: React.Dispatch<React.SetStateAction<string>>;
   filteredChatList: string[];
   selectedChatId: string;
   setSelectedChatId: React.Dispatch<React.SetStateAction<string>>;
@@ -33,6 +36,8 @@ const SidebarList: React.FC<SidebarListProps> = ({
   setReturnSourceDocuments,
   modelTemperature,
   setModelTemperature,
+  qaPrompt,
+  setQAPrompt,
   filteredChatList,
   selectedChatId,
   createChat,
@@ -59,6 +64,8 @@ const SidebarList: React.FC<SidebarListProps> = ({
               modelTemperature={modelTemperature}
               setModelTemperature={setModelTemperature}
             />
+
+            <QAPrompt qaPrompt={qaPrompt} setQAPrompt={setQAPrompt} />
 
             <Button
               buttonType="primary"
